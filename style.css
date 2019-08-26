@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+    font-family:'Noto Sans', serif;    
+}
+.container {
+    max-width: 855px;
+    margin: 0 auto;    
+}
+.container-left {
+    min-width: 285px;
+}
+.container-right {
+    min-width: 570px;
+}
+    .header {        
+        display: flex;
+        border-bottom: 1px solid #000;
+    }
+        .header p {
+           margin-top: 13px;
+           font-style: italic;
+        }

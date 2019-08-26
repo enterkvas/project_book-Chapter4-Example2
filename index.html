@@ -5,27 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Простое приложение</title>
+    <link
+      rel="stylesheet"
+      href="http://fonts.fontstorage.com/import/noto.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>Комментарии</h1>
-      <h2>Простое приложение, позволяющее писать комментарии</h2>
-    </header>
-    <main>
-      <section class="comment-input">
-        <p>Добавьте ваш комментарий:</p>
-        <input type="text" /><button>+</button>
-      </section>
-      <section class="comments">
-        <p>Это первый комментарий</p>
-        <p>Это второй!</p>
-        <p>Это следующий.</p>
-        <p>А это еще один</p>
-      </section>
-    </main>
-    <footer>
-      Работа размещена на общественном домене
-    </footer>
+    <div class="container">
+      <header class="header">
+        <div class="container-left">
+          <h1>Комментарии</h1>
+        </div>
+        <div class="container-right">
+          <p>Простое приложение, позволяющее писать комментарии</p>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="container-left">
+          <section class="comment-input">
+            <p>Добавьте ваш комментарий:</p>
+            <input type="text" /><button>+</button>
+          </section>
+        </div>
+        <div class="container-right">
+          <section class="comments">
+            <p>Это первый комментарий</p>
+            <p>Это второй!</p>
+            <p>Это следующий.</p>
+            <p>А это еще один</p>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        Работа размещена на общественном домене
+      </footer>
+    </div>
   </body>
 </html>
