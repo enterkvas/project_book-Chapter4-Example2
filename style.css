@@ -69,6 +69,12 @@ html, body {
                 padding: 3px 5px;
                 border-radius: 5px;
             }
+            .comments p:nth-child(even) {
+                background: lavender;            
+            }
+            .comments p:nth-child(odd) {
+                background: gainsboro;            
+            }
 
     .footer p {
         font-size: 12px;
