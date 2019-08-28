@@ -1,28 +1,76 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 html, body {
     height: 100%;
     font-family:'Noto Sans', serif;    
 }
 .container {
-    max-width: 855px;
-    margin: 0 auto;    
+    max-width: 915px;
+    margin: 0 auto;
+    padding: 0 30px;    
 }
 .container-left {
-    min-width: 285px;
+    width: 285px;
 }
 .container-right {
-    min-width: 570px;
+    width: 570px;
 }
     .header {        
         display: flex;
-        border-bottom: 1px solid #000;
+        border-bottom: 2px solid #000;
     }
         .header h1 {
-            margin-bottom: 2px;            
+            margin-bottom: 2px;
+            font-size: 26px;            
         }
         .header p {
-            margin-top: 13px;
+            font-size: 16px;
+            margin-top: 10px;
             font-style: italic;
         }
+
+    .main {
+        display: flex;
+        padding: 30px 0 40px 0;
+        border-bottom: 2px solid #000;        
+    }
+            .comment-input p {
+                margin-bottom: 10px;
+                font-size: 14px;
+                font-weight: normal;
+            }
+            .comment-input .input {
+                width: 80%;
+                height: 25px;
+                margin-right: 5px;
+                border-top: 1px solid #ccc;
+                border-left: 2px solid #000;
+                border-bottom: 2px solid #000;
+                border-right: 2px solid #000;
+                
+            }
+            .comment-input .input:hover {
+                box-shadow: 0 1px 15px #CFD8DC;
+            }
+            .comment-input button {
+                color: #fff;
+                font-weight: bold;
+                background: #000; 
+                padding: 0;
+                padding: 7px;
+                border-radius: 0 5px 6px 0;           
+            }               
+            .comments p {                
+                font-size: 15px;
+                background: #ccc;
+                margin-bottom: 8px;
+                padding: 3px 5px;
+                border-radius: 5px;
+            }
+
+    .footer p {
+        font-size: 12px;
+    }
+
