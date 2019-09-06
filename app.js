@@ -147,42 +147,100 @@
 /*Два различия между обработчиками click и keypress: 1) первый настроен на улавливание щелчка кнопкой мыши, а второй - на нажатие клавиши клавиатуры;*/
 /* 2. в разных обработчиках мы перехватываем события в разных элементах(в первом: button, во втором: input)*/
 
-// При нажатии ЛЮБОЙ клавиши у нас добавляется в консоли запись "Hellow, World!".
-// Но нам нужно, чтобы кроме Enter др клавиши были ПРОИГНОРЕНЫ.
-// Для этого исп-м ЛОКАЛЬНУЮ ПЕРЕМЕННУЮ, кот-я будет хранить значение с инфой о нажатой клаве:  
+// При нажатии ЛЮБОЙ клавиши у нас добавляется в консоли запись "Hellow, World!". Но нам нужно, чтобы нажатие всех других клавиш, кроме Enter, были проигнорены.
+// Для этого нужно "вычислить" код нужной нам клавиши Enter. Для этого восп-ся локальной переменной event.keyCode, кот будет хранить значение с инф-й о нажатой клавише:
 
 // var main = function () {
 //     "use strict";
 //     $(".comment-input input").on("keypress", function (event) {
-//         if (event.keyCode == 13) {
+//         console.log("Это значение keyCode" + event.keyCode);
+//     })    
+// }
+// $(document).ready(main);
+
+// Т.о. мы узнали, что значение keyCode для клавиши Enter - 13;
+
+// Теперь, исп-в оператор if мы сделаем так, чтобы код реагировал ТОЛЬКО на нажатие клавиши Enter:
+
+// var main = function () {
+//     "use strict";
+//     $(".comment-input input").on("keypress", function (event) {
+//         if (event.keyCode === 13) {
 //             console.log("Это значение keyCode" + event.keyCode);
 //         }        
 //     })    
 // }
 // $(document).ready(main);
 
-// Теперь код выводит значение keyCode т. при нажатии на клаву Enter.
+// И теперь просто копируем и вставляем код предыдущего обработчика события click(который добавляет новый коммент) в полученный код:
 
-// Теперь н. скопировать код из другого обработчика событий, который добавляет комментарий:
+// var main = function () {
+//     "use strict";
+//     $(".comment-input input").on("keypress", function (event) {
+//         var $new_comment;
+//         if (event.keyCode == 13) {
+//             if ($(".comment-input input").val() !== "") {               
+//                 $new_comment = $("<p></p>").text($(".comment-input input").val());
+//                 $(".comments").append($new_comment);
+//                 $(".comment-input input").val("");                
+//             }           
+//         }
+//     })    
+// }
+// $(document).ready(main);
+
+// (отсебятина, но которая в книге будет добавлена позднее - просто для ясности) соединяем коды обеих обработчиков(click и keypress) в один код:
+
+// var main = function () {
+//     "use strict";
+//     $(".comment-input button").on("click", function (event) {
+//         var $new_comment;
+//         if ($(".comment-input input").val() !== "") {
+//             $new_comment = $("<p></p>").text($(".comment-input input").val());
+//             $(".comments").append($new_comment);
+//             $(".comment-input input").val("");
+//         }
+//     })
+//     $(".comment-input input").on("keypress", function (event) {
+//         var $new_comment;
+//         if (event.keyCode == 13) {
+//             if ($(".comment-input input").val() !== "") {
+//                 $new_comment = $("<p></p>").text($(".comment-input input").val());
+//                 $(".comments").append($new_comment);
+//                 $(".comment-input input").val("");
+//             }
+//         }                
+//     })
+// }
+// $(document).ready(main);
+
+// И теперь новый коммент из текстового поля ввода вставляется и через нажатие кнопки + и через нажатие клавиши Enter.
+
+            // Плавное появление комментария:
 
 var main = function () {
     "use strict";
+    $(".comment-input button").on("click", function (event) {
+        var $new_comment;
+        if ($(".comment-input input").val() !== "") {
+            $new_comment = $("<p></p>").text($(".comment-input input").val());
+            $(".comments").append($new_comment);
+            $(".comment-input input").val("");
+        }
+    })
     $(".comment-input input").on("keypress", function (event) {
         var $new_comment;
-        if (event.keyCode == 13) {            
-            if ($(".comment-input input").val() !== "") { 
+        if (event.keyCode == 13) {
+            if ($(".comment-input input").val() !== "") {
                 $new_comment = $("<p></p>").text($(".comment-input input").val());
                 $(".comments").append($new_comment);
                 $(".comment-input input").val("");
-            } 
-        }       
-    })    
+            }
+        }                
+    })
 }
 $(document).ready(main);
 
-// И теперь новый коммент из текстового поля ввода вставляется и через нажатие Enter.
-
-            // Плавное появление комментария:
 
 
 
