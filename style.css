@@ -61,7 +61,10 @@ html, body {
                 padding: 0;
                 padding: 7px;
                 border-radius: 0 5px 6px 0;           
-            }               
+            } 
+                .comment-input button:hover {
+                    cursor: pointer;         
+                }              
             .comments p {                
                 font-size: 15px;
                 background: #ccc;
