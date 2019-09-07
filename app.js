@@ -216,7 +216,36 @@
 
 // И теперь новый коммент из текстового поля ввода вставляется и через нажатие кнопки + и через нажатие клавиши Enter.
 
+// (отсебятина: нижеприведенный код - в кач. эксперимента: заменил в выборке тэг input на класс input - все работает!):
+
+// var main = function () {
+//     "use strict";
+//     $(".comment-input button").on("click", function (event) {
+//         var $new_comment;
+//         if ($(".comment-input .input").val() !== "") {
+//             $new_comment = $("<p></p>").text($(".comment-input .input").val());
+//             $(".comments").append($new_comment);
+//             $(".comment-input .input").val("");
+//         }
+//     })
+//     $(".comment-input .input").on("keypress", function (event) {
+//         var $new_comment;
+//         if (event.keyCode == 13) {
+//             if ($(".comment-input .input").val() !== "") {
+//                 $new_comment = $("<p></p>").text($(".comment-input .input").val());
+//                 $(".comments").append($new_comment);
+//                 $(".comment-input .input").val("");
+//             } 
+//         }
+//     })
+// }
+// $(document).ready(main);
+
             // Плавное появление комментария:
+
+// Для ПЛАВНОГО появления нового коммента исп-м метод fadeIn().
+// Но, для того, чтобы сработал метод fadeIn()? необх-мо, чтобы этот элемент ВНАЧАЛЕ был скрыт.
+// Для этого применяет перед методом fadeIn() метод hide():
 
 var main = function () {
     "use strict";
@@ -224,8 +253,10 @@ var main = function () {
         var $new_comment;
         if ($(".comment-input input").val() !== "") {
             $new_comment = $("<p></p>").text($(".comment-input input").val());
+            $new_comment.hide();
             $(".comments").append($new_comment);
-            $(".comment-input input").val("");
+            $new_comment.fadeIn();
+            $(".comment-input input").val("").focus();
         }
     })
     $(".comment-input input").on("keypress", function (event) {
@@ -233,13 +264,44 @@ var main = function () {
         if (event.keyCode == 13) {
             if ($(".comment-input input").val() !== "") {
                 $new_comment = $("<p></p>").text($(".comment-input input").val());
+                $new_comment.hide();
                 $(".comments").append($new_comment);
+                $new_comment.fadeIn();
                 $(".comment-input input").val("");
             }
         }                
     })
 }
 $(document).ready(main);
+
+// отсебятина: в 1-й части кода добавил метод focus(), т.к. в отличие от keypress в методе click после нажатия на кнопку + в поле текстовгог ввода теряется фокус.
+
+// отсебятина: код ниже: работает т.ж.. только код - короче(применил цепной метод):
+
+// var main = function () {
+//     "use strict";
+//     $(".comment-input button").on("click", function (event) {
+//         var $new_comment;
+//         if ($(".comment-input input").val() !== "") {
+//             $new_comment = $("<p></p>").text($(".comment-input input").val()).hide().fadeIn();
+//             $(".comments").append($new_comment);
+//             $(".comment-input input").val("").focus();
+//         }
+//     })
+//     $(".comment-input input").on("keypress", function (event) {
+//         var $new_comment;
+//         if (event.keyCode == 13) {
+//             if ($(".comment-input input").val() !== "") {
+//                 $new_comment = $("<p></p>").text($(".comment-input input").val()).hide().fadeIn();
+//                 $(".comments").append($new_comment);
+//                 $(".comment-input input").val("");
+//             }
+//         }                
+//     })
+// }
+// $(document).ready(main);
+
+
 
 
 
